@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PostService from "../services/post.service";
 import {Card} from "react-bootstrap";
-import AuthService from "../services/auth.service";
 
 const AllPosts = () => {
   const [posts, setPosts] = useState([]);

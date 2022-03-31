@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Button, Form} from "react-bootstrap";
-import AuthService from "../services/auth.service";
 import postService from "../services/post.service";
 import {useNavigate, useParams} from "react-router";
 

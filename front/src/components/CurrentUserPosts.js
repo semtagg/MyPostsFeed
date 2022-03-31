@@ -17,7 +17,7 @@ const CurrentUserPosts = () => {
         console.log(error);
       }
     );
-  }, []);
+  }, [id]);
 
   return (
     <div>

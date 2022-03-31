@@ -48,10 +48,6 @@ const login = (nickname) => {
     });*/
 };
 
-const getNicknameById = (id) => {
-  return axios.get(url + "/api/getNicknameById/" + id);
-}
-
 const getAllNicknames = () => {
   return axios.get(url + "/api/getAllNicknames");
 }
