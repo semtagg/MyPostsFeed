@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+# Тестовое задание в команду контентной платформы ВК 2022
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Почему выбрал Postgres:
+1. Потому что на heroku (где хостится серверная часть приложения) предоставляется бесплатный пробный доступ к этой БД
+2. Потому что имеется небольший опыт в использовании pgAdmin 4
+3. Потому что это postgres
 
-## Available Scripts
+## Тестовое задание
 
-In the project directory, you can run:
+Необходимо разработать аналог новостного портала-мини-версию Reddit, 4chan или Тwitter. У него должна быты следующая функциональность: 
+1. Возможность при первом заходе указать никнейм. Логин и пароль можно не делать (но можно сделать полноценную аутентификацию)
+2. Данные авторизации должны сохраняться в сессии
+3. Возможность написать текстовый пост
+4. При заходе пользователь должен видеть ленту из ранее опубликованных постов, отсортированных по времени публикации от свежих к старым
+5. Кнопка «Выйти» и возможность перелогиниться под другим именем
 
-### `npm start`
+## Требования к выполнению
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. В качестве бэкендового языка можно использовать JavaScript или РНР на своё усмотрение
+2. БД - на свое усмотрение, выбор стоит мотивировать в Readme.md
+3. Бэкенд должен состоять из Rest API методов, быть написан без использования сторонних фреймворков по типу Laravel и Symifony
+4. Бэкенд должен уметь корректно обрабатывать ошибки в случае недоступности БД и других непонятных обстоятельств
+5. На фронтендовой части необходимо использовать ReactJS (приветствуется использование VKUI)
+6. Возможности постинга, просмотра ленты и смены пользователя должны быть разделены на разные страницы
+7. Фронтенд должен уметь корректно отработать при любой ошибке из бэкенда, в том числе если сервер не отвечает
+8. Необходимо выложить на GitHub воспроизводимый код и поднять живое демо
