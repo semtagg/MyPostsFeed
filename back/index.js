@@ -10,11 +10,9 @@ const server = http.createServer(async (req, res) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Allow-Credentials', true);
+
     if (req.method === 'OPTIONS') {
-        console.log('!OPTIONS');
         var headers = {};
-        // IE8 does not allow domains to be specified, just the *
-        // headers["Access-Control-Allow-Origin"] = req.headers.origin;
         headers["Access-Control-Allow-Origin"] = "*";
         headers["Access-Control-Allow-Methods"] = "POST, GET, PUT, DELETE, OPTIONS";
         headers["Access-Control-Allow-Credentials"] = false;
@@ -24,7 +22,6 @@ const server = http.createServer(async (req, res) => {
         res.end();
     }
 
-    // /api/getAllPosts : GET (вроде работает)
     else if (req.url === "/api/getAllPosts" && req.method === "GET") {
         try {
             const posts = await new postController().getAllPosts();
@@ -36,7 +33,6 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
-    // /api/getPostById/:id : GET (вроде работает)
     else if (req.url.match(/\/api\/getPostsById\/([0-9]+)/) && req.method === "GET") {
         try {
             const id = req.url.split("/")[3];
@@ -49,7 +45,6 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
-    // /api/createPost : POST (вроде работает)
     else if (req.url === "/api/createPost" && req.method === "POST") {
         try {
             const data = await getReqData(req);
@@ -59,11 +54,10 @@ const server = http.createServer(async (req, res) => {
             res.end(JSON.stringify(post))
         } catch (error) {
             res.writeHead(500, {"Content-Type": "application/json"});
-            res.end(JSON.stringify({message: "Server unavailable"}));
+            res.end(JSON.stringify({message: error}));
         }
     }
 
-    // /api/login : POST (вроде работает)
     else if (req.url === "/api/login" && req.method === "POST") {
         try {
             let data = await getReqData(req);
@@ -76,7 +70,6 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
-    // /api/register : POST (вроде работает)
     else if (req.url === "/api/register" && req.method === "POST") {
         try {
             let data = await getReqData(req);
@@ -84,7 +77,7 @@ const server = http.createServer(async (req, res) => {
             res.writeHead(200, {"Content-Type": "application/json"});
             res.end(JSON.stringify(token));
         } catch (error) {
-            res.writeHead(404, {"Content-Type": "application/json"});
+            res.writeHead(409, {"Content-Type": "application/json"});
             res.end(JSON.stringify({message: error}));
         }
     }
@@ -113,7 +106,6 @@ const server = http.createServer(async (req, res) => {
         }
     }
 
-    // No route present
     else {
         res.writeHead(404, {"Content-Type": "application/json"});
         res.end(JSON.stringify({message: "Route not found"}));

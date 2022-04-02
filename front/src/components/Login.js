@@ -16,11 +16,17 @@ const Login = () => {
           window.location.reload();
         },
         (error) => {
-          console.log(error);
+          setNickname(prevState => ({
+            ...prevState,
+            error: ['Пользователь не найден']
+          }))
         }
       );
     } catch (err) {
-      console.log(err);
+      setNickname(prevState => ({
+        ...prevState,
+        error: ['Сервис недоступен']
+      }))
     }
   };
 
@@ -50,6 +56,11 @@ const Login = () => {
                   >
                     Login
                   </button>
+                  {nickname.error && (
+                    <p style={{color: "red", marginBottom: "0"}}>
+                      {nickname.error}
+                    </p>
+                  )}
                   <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
                                                                                         className="link-danger">Register</a>
                   </p>
@@ -64,16 +75,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/*<div>
-  <form onSubmit={handleLogin}>
-    <h3>Login</h3>
-    <input
-      type="text"
-      placeholder="nickname"
-      value={nickname}
-      onChange={(e) => setNickname(e.target.value)}
-    />
-    <button type="submit">Log in</button>
-  </form>
-</div>*/

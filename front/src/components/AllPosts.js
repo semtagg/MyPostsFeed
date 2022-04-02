@@ -20,7 +20,7 @@ const AllPosts = () => {
   return (
     <div>
       <h3>
-        {posts.slice(0).reverse().map((post, index) => (
+        {posts.map((post, index) => (
           /*<div key={index}>{post.title + post.content + post.user_id}</div>*/
           <Card className='my-2' key={index} style={{ width: 'auto' }}>
             <Card.Body>

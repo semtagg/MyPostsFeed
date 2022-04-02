@@ -35,16 +35,6 @@ function App() {
   };
 
   return (
-    /*<div className="App">
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/getAllPosts" element={<AllPosts/>}/>
-        <Route path="/getPostById/:id" element={<CurrentUserPosts/>}/>
-        <Route path="/createPost" element={<CreatePost/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/register" element={<Register/>}/>
-      </Routes>
-    </div>*/
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-primary">
         <div className="navbar-nav mr-auto">

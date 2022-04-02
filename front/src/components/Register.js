@@ -1,83 +1,91 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import AuthService from "../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
-    const [nickname, setNickname] = useState("");
+  const [nickname, setNickname] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-        try {
-            await AuthService.register(nickname).then(
-              (response) => {
-                  // check for token and user already exists with 200
-                  //   console.log("Sign up successfully", response);
-                  navigate("/");
-                  window.location.reload();
-              },
-              (error) => {
-                  console.log(error);
-              }
-            );
-        } catch (err) {
-            console.log(err);
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await AuthService.register(nickname).then(
+        (response) => {
+          navigate("/");
+          window.location.reload();
+        },
+        (error) => {
+          setNickname(prevState => ({
+            ...prevState,
+            error: ['Пользователь уже существует']
+          }))
         }
-    };
+      );
+    } catch (err) {
+      setNickname(prevState => ({
+        ...prevState,
+        error: ['Сервис недоступен']
+      }))
+    }
+  };
 
-    return (
-      <div>
-        <section className="vh-100">
-          <div className="container h-100">
-            <div className="row d-flex justify-content-center align-items-center h-100">
-              <div className="col-lg-12 col-xl-11">
-                <div className="card text-black border-0">
-                  <div className="card-body p-md-5">
-                    <div className="row justify-content-center">
-                      <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+  return (
+    <div>
+      <section className="vh-100">
+        <div className="container h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-lg-12 col-xl-11">
+              <div className="card text-black border-0">
+                <div className="card-body p-md-5">
+                  <div className="row justify-content-center">
+                    <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                      <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                        <form className="mx-1 mx-md-4">
+                      <form className="mx-1 mx-md-4">
 
-                          <div className="d-flex flex-row align-items-center mb-4">
-                            <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                            <div className="form-outline flex-fill mb-0">
-                              <input type="email" id="form3Example3" className="form-control form-control-lg"
-                                     placeholder="Enter a valid nickname"
-                                     onChange={(e) => setNickname(e.target.value)}
-                              />
-                              <label className="form-label" htmlFor="form3Example1c">Your Nickname</label>
-                            </div>
+                        <div className="d-flex flex-row align-items-center mb-4">
+                          <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div className="form-outline flex-fill mb-0">
+                            <input type="email" id="form3Example3" className="form-control form-control-lg"
+                                   placeholder="Enter a valid nickname"
+                                   onChange={(e) => setNickname(e.target.value)}
+                            />
+                            <label className="form-label" htmlFor="form3Example1c">Your Nickname</label>
                           </div>
+                        </div>
 
-                          <div className="d-flex justify-content-left mx-3 mb-3 mb-lg-4">
-                            <button type="button" className="btn btn-primary btn-lg px-3"
-                                    onClick={handleRegister}
-                            >
-                              Register
-                            </button>
-                          </div>
+                        <div className="d-flex justify-content-left mx-3 mb-3 mb-lg-4">
+                          <button type="button" className="btn btn-primary btn-lg px-3"
+                                  onClick={handleRegister}
+                          >
+                            Register
+                          </button>
+                        </div>
+                        {nickname.error && (
+                          <p style={{color: "red", marginBottom: "0"}}>
+                            {nickname.error}
+                          </p>
+                        )}
+                      </form>
 
-                        </form>
+                    </div>
+                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                      </div>
-                      <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                           className="img-fluid" alt="Sample"/>
 
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                             className="img-fluid" alt="Sample"/>
-
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    );
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default Register;

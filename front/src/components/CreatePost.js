@@ -48,9 +48,12 @@ const CreatePost = () => {
           />
         </Form.Group>
       </Form>
+
       <Button variant="primary"
               onClick={handleCreate}
-      >Create</Button>
+      >
+        Create
+      </Button>
     </div>
   )
 }
