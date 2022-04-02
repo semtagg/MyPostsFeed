@@ -3,7 +3,7 @@ const db = require('../db/db')
 class PostController {
   async getAllPosts() {
     return new Promise(async (resolve, reject) => {
-      let data = await db.query("SELECT title, content, nickname FROM post,person WHERE post.user_id = person.id ORDER BY title");
+      let data = await db.query("SELECT title, content, nickname FROM post,person WHERE post.user_id = person.id ORDER BY post.id DESC");
 
       if (!data)
         reject("The database is not available");

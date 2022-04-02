@@ -21,7 +21,6 @@ const AllPosts = () => {
     <div>
       <h3>
         {posts.map((post, index) => (
-          /*<div key={index}>{post.title + post.content + post.user_id}</div>*/
           <Card className='my-2' key={index} style={{ width: 'auto' }}>
             <Card.Body>
               <Card.Title>{post.title}</Card.Title>
